@@ -1,8 +1,10 @@
 const express = require('express');
+const ip = require('ip');
 const conectarDB = require('./config/db');
 const cors = require('cors');
 //server
 const app = express();
+const ipAddress = ip.address();
 
 //conectar db
 conectarDB();
@@ -25,5 +27,6 @@ app.use('/api/tareas',require('./routes/tareas'));
 
 //arranca la app
 app.listen(port,'0.0.0.0',()=>{
-    console.log(`server running in port ${port}`)
+    
+    console.log(`server running in port ${port} - ${ipAddress},`)
 });
